@@ -2,21 +2,27 @@
 <hr>
 <div class="row">
     <div class="col">
-        <shared-search-box
+
+       <!-- <shared-search-box
           (onValue)="searchByCapital($event)"
-        placeholder="Buscar por capital"></shared-search-box>
+        placeholder="Buscar por capital"></shared-search-box>-->
+        <shared-search-box
+          (onDebounce)="searchByCapital($event)"
+         [InitialValue] ="initialValue"
+          placeholder="Buscar por capital">
+        </shared-search-box>
+
     </div>
 </div>
 
 <div class="row">
   <div class="col">
     <hr>
-    <ul>
+     <shared-loading-spinner *ngIf="isLoading"></shared-loading-spinner>
+
       <!--   <li *ngFor="let country of countries">   {{country.capital}} - {{country.population}}  </li> -->
-        <countries-table [countries]="countries">
+        <countries-table [countries]="countries"> </countries-table>
 
-        </countries-table>
 
-    </ul>
   </div>
 </div>
